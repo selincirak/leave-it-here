@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Leave It Here Privacy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F7F4EF;
+    --paper-edge: #EFEAE1;
+    --haze: #E4DDD0;
+    --ash: #B7AE9F;
+    --slate: #8A8173;
+    --graphite: #575047;
+    --ink: #211D18;
+    --ember: #C8542E;
+    --ember-ink: #8F3A1E;
+    --ok: #4C7A5E;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #211D18;
+      --paper-edge: #2C2721;
+      --haze: #3A342C;
+      --ash: #6E675B;
+      --slate: #A89F90;
+      --graphite: #CFC7B8;
+      --ink: #F3EEE4;
+      --ember: #E0824F;
+      --ember-ink: #F0966B;
+      --ok: #7FB596;
+      color-scheme: dark;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--graphite);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    padding-left: max(20px, env(safe-area-inset-left, 0px));
+    padding-right: max(20px, env(safe-area-inset-right, 0px));
+    padding-bottom: 80px;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; }
+
+  .mast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 48px;
+    margin-bottom: 8px;
+  }
+  .mark { width: 34px; height: 34px; flex: none; }
+  .appname {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    letter-spacing: -0.3px;
+    color: var(--ink);
+  }
+
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(30px, 7vw, 40px);
+    letter-spacing: -0.8px;
+    line-height: 1.08;
+    color: var(--ink);
+    margin: 18px 0 6px;
+    text-wrap: balance;
+  }
+  .meta {
+    font-family: 'Space Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.4px;
+    color: var(--ash);
+    margin-bottom: 40px;
+  }
+
+  .lede {
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 58ch;
+    margin-bottom: 44px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--paper-edge);
+  }
+  .lede strong { color: var(--ember-ink); font-weight: 600; }
+
+  section { margin-bottom: 40px; max-width: 62ch; }
+  h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: -0.3px;
+    color: var(--ink);
+    margin: 0 0 14px;
+  }
+  p { margin: 0 0 12px; }
+  p:last-child { margin-bottom: 0; }
+
+  .grid {
+    display: grid;
+    gap: 2px;
+    background: var(--paper-edge);
+    border: 1px solid var(--paper-edge);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 18px 0;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+    gap: 16px;
+    background: var(--paper);
+    padding: 14px 16px;
+  }
+  .row dt {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    color: var(--slate);
+    padding-top: 2px;
+  }
+  .row dd { margin: 0; color: var(--ink); font-size: 14.5px; }
+  .row dd.ok { color: var(--ok); font-weight: 500; }
+
+  ul { margin: 0 0 12px; padding-left: 20px; }
+  li { margin-bottom: 6px; }
+  li::marker { color: var(--ember); }
+
+  .tag {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.4px;
+    color: var(--ok);
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    padding: 3px 10px;
+    margin-bottom: 4px;
+  }
+
+  footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--paper-edge);
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--ash);
+    letter-spacing: 0.3px;
+  }
+  footer a { color: var(--slate); }
+
+  @media (max-width: 480px) {
+    .row { grid-template-columns: 1fr; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mast">
+    <svg class="mark" viewBox="0 0 48 48" fill="none">
+      <path d="M23 10H14.5C12.0147 10 10 12.0147 10 14.5V33.5C10 35.9853 12.0147 38 14.5 38H33.5C35.9853 38 38 35.9853 38 33.5V28"
+        stroke="#211D18" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="28.25" y="9.25" width="9.5" height="12.5" rx="2" transform="rotate(12 33 15.5)" fill="#C8542E"/>
+    </svg>
+    <span class="appname">Leave It Here</span>
+  </div>
+
+  <h1>Privacy</h1>
+  <p class="meta">effective 18 oct 2026</p>
+
+  <p class="lede">
+    The short version: <strong>nothing you drop here ever leaves your phone.</strong>
+    There's no account, no server, and no one but you has access to what you save.
+  </p>
+
+  <section>
+    <h2>What stays on your device</h2>
+    <p>
+      Everything you leave — text, links, photos, the times you ask to be
+      reminded — is written to a local database inside the app's own storage
+      on your phone. None of it is uploaded, synced, backed up, or sent
+      anywhere. If you uninstall Leave It Here, all of it is deleted with it.
+    </p>
+    <div class="grid">
+      <div class="row">
+        <dt>text &amp; links</dt>
+        <dd>stored in a local database on your device</dd>
+      </div>
+      <div class="row">
+        <dt>photos</dt>
+        <dd>saved as files in the app's private storage</dd>
+      </div>
+      <div class="row">
+        <dt>reminder times</dt>
+        <dd>scheduled as local notifications on your phone, nowhere else</dd>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What we collect</h2>
+    <span class="tag">nothing</span>
+    <p>
+      Leave It Here has no servers to send data to. There's no account to
+      create, no analytics tracking what you do in the app, no advertising,
+      and nothing shared with third parties — because there's no mechanism
+      in the app that could share it. We, the people who made this app,
+      cannot see your notes, your photos, or what you've saved. There's
+      simply no pipe from your phone to us.
+    </p>
+  </section>
+
+  <section>
+    <h2>Permissions the app asks for</h2>
+    <p>Each one is used only for the feature it's named after, only when you use that feature:</p>
+    <div class="grid">
+      <div class="row">
+        <dt>photo library</dt>
+        <dd>to let you attach a photo when you drop something — the app never browses your library on its own</dd>
+      </div>
+      <div class="row">
+        <dt>notifications</dt>
+        <dd>to show the reminders you set — local only, not push notifications from a server</dd>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Sensitive content</h2>
+    <p>
+      Leave It Here can recognize when something you've typed looks like a
+      password, PIN, or similar — a plain pattern match that happens
+      entirely on your device. It never reads the content aloud to a
+      server to make that call. You decide whether to keep it hidden
+      (masked until you tap to reveal) or visible, and that choice, like
+      everything else, stays local to your phone.
+    </p>
+  </section>
+
+  <section>
+    <h2>Children</h2>
+    <p>
+      Leave It Here isn't directed at children and doesn't knowingly
+      collect information from anyone — which, as above, is true for every
+      user regardless of age, since nothing is collected from anyone.
+    </p>
+  </section>
+
+  <section>
+    <h2>Changes to this policy</h2>
+    <p>
+      If this ever changes — say, a future version adds optional sync —
+      this page will be updated first, with the effective date above moved
+      to match, before that feature ships.
+    </p>
+  </section>
+
+  <footer>
+    Questions about this policy: <a href="mailto:selinr41@gmail.com">selinr41@gmail.com</a>
+  </footer>
+</div>
+</body>
+</html>
